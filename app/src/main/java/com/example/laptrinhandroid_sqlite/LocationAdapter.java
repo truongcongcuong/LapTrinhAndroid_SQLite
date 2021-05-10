@@ -43,7 +43,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.NameVi
         holder.ibt_li_remove.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
 
         holder.ibt_li_remove.setOnClickListener(v -> {
-
             list.remove(position);
             databaseHandler.removeLocation(location.getId());
             notifyDataSetChanged();
