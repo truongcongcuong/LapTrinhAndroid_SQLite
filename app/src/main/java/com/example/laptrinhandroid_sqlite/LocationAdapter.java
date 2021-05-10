@@ -50,7 +50,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.NameVi
         });
         holder.ibt_li_update.setOnClickListener(v -> showForgotDialog(context,position));
     }
-
     @Override
     public int getItemCount() {
         return list.size();
