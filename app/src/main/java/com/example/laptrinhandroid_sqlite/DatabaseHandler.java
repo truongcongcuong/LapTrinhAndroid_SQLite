@@ -42,10 +42,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         database.insert(TABLE_NAME,null,contentValues);
         database.close();
     }
-//    public List<Location> getLocations(){
-//        List<Location> list = new ArrayList<>();
-//        String sqlStringGetLocations = "select * from " + TABLE_NAME;
-//        SQLiteDatabase db = this.getReadableDatabase();
+    public List<Location> getLocations(){
+        List<Location> list = new ArrayList<>();
+        String sqlStringGetLocations = "select * from " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
 //        Cursor cursor =
-//    }
+        return list;
+    }
 }
