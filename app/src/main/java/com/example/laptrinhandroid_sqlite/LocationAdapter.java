@@ -48,7 +48,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.NameVi
             databaseHandler.removeLocation(location.getId());
             notifyDataSetChanged();
         });
-
         holder.ibt_li_update.setOnClickListener(v -> showForgotDialog(context,position));
     }
 
