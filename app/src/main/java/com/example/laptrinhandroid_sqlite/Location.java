@@ -12,6 +12,10 @@ public class Location {
         this.name = name;
     }
 
+    public Location(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

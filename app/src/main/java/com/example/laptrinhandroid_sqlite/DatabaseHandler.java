@@ -25,7 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlStringCreate = String.format("create table %s(%s int primary key identity(1,1), %s nvarchar(50))",TABLE_NAME,LOCATION_ID,LOCATION_NAME);
+        String sqlStringCreate = String.format("create table %s(%s integer primary key AUTOINCREMENT, %s nvarchar(50))",TABLE_NAME,LOCATION_ID,LOCATION_NAME);
         db.execSQL(sqlStringCreate);
     }
 
@@ -46,7 +46,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<Location> list = new ArrayList<>();
         String sqlStringGetLocations = "select * from " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor =
+        Cursor cursor = db.rawQuery(sqlStringGetLocations,null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+            Location location = new Location(cursor.getInt(0),cursor.getString(1));
+            list.add(location);
+            cursor.moveToNext();
+        }
         return list;
+    }
+    public void removeLocation(int locationID){
+        SQLiteDatabase db =this.getWritableDatabase();
+        db.delete(TABLE_NAME,LOCATION_ID +"=?",new String[]{String.valueOf(locationID)});
+        db.close();
     }
 }

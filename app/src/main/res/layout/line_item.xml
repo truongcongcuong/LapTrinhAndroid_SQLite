@@ -2,11 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    >
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,6 +19,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,20 +29,20 @@
             android:id="@+id/ibt_li_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/txt_li_name"
-            app:layout_constraintStart_toEndOf="@+id/txt_li_name"
+            app:layout_constraintEnd_toStartOf="@+id/ibt_li_remove"
             app:layout_constraintTop_toTopOf="@+id/txt_li_name" />
 
         <ImageButton
             android:id="@+id/ibt_li_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/ibt_li_update"
-            app:layout_constraintStart_toEndOf="@+id/ibt_li_update"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ibt_li_update" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

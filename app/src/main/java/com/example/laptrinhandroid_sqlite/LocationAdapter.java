@@ -34,12 +34,18 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.NameVi
         Location location = list.get(position);
         holder.txt_li_location.setText(location.toString());
         holder.ibt_li_update.setBackgroundResource(R.drawable.ic_baseline_edit_location_alt_24);
-        holder.ibt_li_update.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
+        holder.ibt_li_remove.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
+
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void dataChange(List<Location> list){
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     public class NameViewHolder extends RecyclerView.ViewHolder {
