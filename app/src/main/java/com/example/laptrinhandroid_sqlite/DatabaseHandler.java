@@ -35,13 +35,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(sqlStringDrop);
         onCreate(db);
     }
-    public void addNewLocation(Location location){
-        SQLiteDatabase database = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(LOCATION_NAME,location.getName());
-        database.insert(TABLE_NAME,null,contentValues);
-        database.close();
-    }
+//    public void addNewLocation(Location location){
+//        SQLiteDatabase database = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(LOCATION_NAME,location.getName());
+//        database.insert(TABLE_NAME,null,contentValues);
+//        database.close();
+//    }
 //    public List<Location> getLocations(){
 //        List<Location> list = new ArrayList<>();
 //        String sqlStringGetLocations = "select * from " + TABLE_NAME;
