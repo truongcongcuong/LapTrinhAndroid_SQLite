@@ -31,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sqlStringDrop = String.format("drop table if exists $s",TABLE_NAME);
+        String sqlStringDrop = "drop table if exists "+TABLE_NAME;
         db.execSQL(sqlStringDrop);
         onCreate(db);
     }
@@ -48,16 +48,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sqlStringGetLocations,null);
         cursor.moveToFirst();
-        while (cursor.isAfterLast()==false){
+        while (!cursor.isAfterLast()){
             Location location = new Location(cursor.getInt(0),cursor.getString(1));
             list.add(location);
             cursor.moveToNext();
         }
+        cursor.close();
         return list;
     }
     public void removeLocation(int locationID){
         SQLiteDatabase db =this.getWritableDatabase();
         db.delete(TABLE_NAME,LOCATION_ID +"=?",new String[]{String.valueOf(locationID)});
+        db.close();
+    }
+    public void updateLocation(Location location){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(LOCATION_NAME,location.getName());
+        db.update(TABLE_NAME,values,LOCATION_ID + "=?",new String[]{String.valueOf(location.getId())});
         db.close();
     }
 }

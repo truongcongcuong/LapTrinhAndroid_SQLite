@@ -3,12 +3,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends AppCompatActivity {
     EditText edt_main_location;
@@ -16,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rcy_main_location;
     LocationAdapter adapter;
     DatabaseHandler databaseHandler;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,23 +29,16 @@ public class MainActivity extends AppCompatActivity {
         rcy_main_location.setAdapter(adapter);
         rcy_main_location.setLayoutManager(new GridLayoutManager(this,1));
 
+
         btt_main_save.setText("Save");
         btt_main_cancel.setText("Cancel");
 
-        btt_main_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                databaseHandler.addNewLocation(new Location(edt_main_location.getText().toString()));
-                adapter.dataChange(databaseHandler.getLocations());
-            }
+        btt_main_save.setOnClickListener(v -> {
+            databaseHandler.addNewLocation(new Location(edt_main_location.getText().toString()));
+            adapter.dataChange(databaseHandler.getLocations());
         });
 
-        btt_main_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                edt_main_location.setText("");
-            }
-        });
+        btt_main_cancel.setOnClickListener(v -> edt_main_location.setText(""));
 
     }
 }
